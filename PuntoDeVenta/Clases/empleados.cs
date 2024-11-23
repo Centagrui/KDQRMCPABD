@@ -90,7 +90,7 @@ namespace PuntoDeVenta
             nuevaFila.Cells.Add(new DataGridViewTextBoxCell { Value = Apellido });
             nuevaFila.Cells.Add(new DataGridViewTextBoxCell { Value = Direccion });
             nuevaFila.Cells.Add(new DataGridViewTextBoxCell { Value = Usuario });
-
+            //
             // Agregar la fila al DataGridView
             grid.Rows.Add(nuevaFila);
         }

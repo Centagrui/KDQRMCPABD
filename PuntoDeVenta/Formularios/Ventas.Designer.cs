@@ -269,6 +269,7 @@
             this.fecha.Name = "fecha";
             this.fecha.Size = new System.Drawing.Size(548, 27);
             this.fecha.TabIndex = 19;
+            this.fecha.ValueChanged += new System.EventHandler(this.fecha_ValueChanged);
             // 
             // txtNombreCliente
             // 

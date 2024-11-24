@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using PuntoDeVenta.Formularios;
 
 namespace PuntoDeVenta
 {
@@ -71,5 +72,15 @@ namespace PuntoDeVenta
             form.Show();
             this.Close();
         }
+
+        private void btnGenerarReporte_Click(object sender, EventArgs e)
+        {
+            ReporteVentas reporte = new ReporteVentas();
+            reporte.Show();
+              this.Close();
+            
+            
+        }
+
     }
 }

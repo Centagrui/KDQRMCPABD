@@ -484,6 +484,11 @@ namespace PuntoDeVenta
         {
 
         }
+
+        private void fecha_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
     }
    
     

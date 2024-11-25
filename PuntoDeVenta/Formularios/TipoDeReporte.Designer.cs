@@ -56,7 +56,7 @@
             // 
             // btnTrimestral
             // 
-            this.btnTrimestral.Location = new System.Drawing.Point(323, 248);
+            this.btnTrimestral.Location = new System.Drawing.Point(323, 243);
             this.btnTrimestral.Name = "btnTrimestral";
             this.btnTrimestral.Size = new System.Drawing.Size(134, 91);
             this.btnTrimestral.TabIndex = 2;

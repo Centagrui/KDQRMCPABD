@@ -149,6 +149,18 @@
     <Compile Include="Formularios\TipoDeReporte.Designer.cs">
       <DependentUpon>TipoDeReporte.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\VentaPorEmpleado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\VentaPorEmpleado.Designer.cs">
+      <DependentUpon>VentaPorEmpleado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\VentaTrimestral.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\VentaTrimestral.Designer.cs">
+      <DependentUpon>VentaTrimestral.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Formularios\Registrar.cs">
       <SubType>Form</SubType>

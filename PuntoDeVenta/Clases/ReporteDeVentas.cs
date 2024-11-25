@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Data;
 using MySql.Data.MySqlClient;
-using PuntoDeVenta.Formularios;
 
 namespace PuntoDeVenta
 {
@@ -10,51 +9,49 @@ namespace PuntoDeVenta
     {
         public class Venta
         {
+            public int Id { get; set; }
+            public string Cliente { get; set; }
+            public string Empleado { get; set; }
+            public int CantidadProductos { get; set; }
+            public decimal MontoTotal { get; set; }
+            public DateTime FechaVenta { get; set; }
+        }
 
-            private string connectionString = "server=localhost;database=tarea;user=root;password=root;";
+        private string connectionString = "server=localhost;database=tarea;user=root;password=root;";
 
-            // Método para obtener las ventas del mes y año seleccionados
-            public List<Venta> ObtenerVentasPorMes(int mes, int anio)
+        public List<Venta> ObtenerVentas(DateTime fecha)
+        {
+            var ventas = new List<Venta>();
+            using (var connection = new MySqlConnection(connectionString))
             {
-                List<Venta> ventas = new List<Venta>();
+                // Filtra las ventas por una fecha específica (sin considerar hora)
+                string query = @"SELECT noVenta, NombreEmpleado, NombreCliente, cantidadProductos, totalVenta, fechaVenta
+                         FROM detallesVenta
+                         WHERE DATE(fechaVenta) = @Fecha";
 
-                // Consulta SQL para obtener las ventas del mes y año seleccionados
-                string query = "SELECT * FROM Ventas WHERE MONTH(fechaVenta) = @Mes AND YEAR(fechaVenta) = @Anio";
-
-                // Conexión a la base de datos y ejecución de la consulta
-                using (MySqlConnection conn = new MySqlConnection(connectionString))
+                using (var command = new MySqlCommand(query, connection))
                 {
-                    conn.Open();
-                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
-                    {
-                        cmd.Parameters.AddWithValue("@Mes", mes);
-                        cmd.Parameters.AddWithValue("@Anio", anio);
+                    command.Parameters.AddWithValue("@Fecha", fecha.Date); // Solo la parte de la fecha
 
-                        using (MySqlDataReader reader = cmd.ExecuteReader())
+                    connection.Open();
+                    using (var reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
                         {
-                            while (reader.Read())
+                            ventas.Add(new Venta
                             {
-                                // Crear un objeto Venta para cada registro
-                                Venta venta = new Venta
-                                {
-                                    Id = reader.GetInt32("idVenta"),
-                                    Cliente = reader.GetString("cliente"),
-                                    FechaVenta = reader.GetDateTime("fechaVenta"),
-                                    MontoTotal = reader.GetDecimal("montoTotal")
-                                };
-                                ventas.Add(venta);
-                            }
+                                Id = reader.GetInt32("noVenta"),
+                                Empleado = reader.GetString("NombreEmpleado"),
+                                Cliente = reader.GetString("NombreCliente"),
+                                CantidadProductos = reader.GetInt32("cantidadProductos"),
+                                MontoTotal = reader.GetDecimal("totalVenta"),
+                                FechaVenta = reader.GetDateTime("fechaVenta")
+                            });
                         }
                     }
                 }
-
-                return ventas;
             }
-
-            public int Id { get; set; }
-            public string Cliente { get; set; }
-            public DateTime FechaVenta { get; set; }
-            public decimal MontoTotal { get; set; }
+            return ventas;
         }
 
     }

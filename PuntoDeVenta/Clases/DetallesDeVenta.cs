@@ -49,9 +49,8 @@ namespace PuntoDeVenta.Clases
         }
 
         // Nuevo método para guardar detalles de venta
-        public void GuardarDetallesVenta(string nombreEmpleado, string nombreCliente, int cantidadProductos, decimal totalVenta)
+        public void GuardarDetallesVenta(string nombreEmpleado, string nombreCliente, int cantidadProductos, decimal totalVenta, DateTime? fechaVenta = null)
         {
-         
             using (MySqlConnection conn = conexionBD.ObtenerConexion())
             {
                 conn.Open();
@@ -61,8 +60,8 @@ namespace PuntoDeVenta.Clases
                 {
                     // Crear la consulta SQL para insertar en la tabla detallesVenta
                     string query = @"
-                    INSERT INTO detallesVenta (NombreEmpleado, NombreCliente, CantidadProductos, TotalVenta)
-                    VALUES (@nombreEmpleado, @nombreCliente, @cantidadProductos, @totalVenta)";
+                INSERT INTO detallesVenta (NombreEmpleado, NombreCliente, cantidadProductos, totalVenta, fechaVenta)
+                VALUES (@nombreEmpleado, @nombreCliente, @cantidadProductos, @totalVenta, @fechaVenta)";
 
                     MySqlCommand cmd = new MySqlCommand(query, conn, transaction);
 
@@ -72,20 +71,24 @@ namespace PuntoDeVenta.Clases
                     cmd.Parameters.AddWithValue("@cantidadProductos", cantidadProductos);
                     cmd.Parameters.AddWithValue("@totalVenta", totalVenta);
 
+                    // Si se proporciona una fecha, úsala; de lo contrario, utiliza la fecha actual
+                    cmd.Parameters.AddWithValue("@fechaVenta", fechaVenta ?? DateTime.Now);
+
                     // Ejecutar la consulta
                     cmd.ExecuteNonQuery();
 
-                    // Si todo va bien, confirmar la transacción
+                    // Confirmar la transacción si todo va bien
                     transaction.Commit();
                 }
                 catch (Exception ex)
                 {
-                    // Si ocurre un error, deshacer los cambios realizados hasta este punto
+                    // Deshacer la transacción si ocurre un error
                     transaction.Rollback();
                     Console.WriteLine($"Error al guardar los detalles de la venta: {ex.Message}");
                 }
             }
         }
+
         public class ProductoService
         {
             internal class DetallesDeVenta

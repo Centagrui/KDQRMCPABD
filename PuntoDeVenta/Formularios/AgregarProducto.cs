@@ -19,7 +19,7 @@ namespace PuntoDeVenta
         public CRUDProducto()
         {
             InitializeComponent();
-            agregarProduc = new AgregarProduc(); // Pasa tu cadena de conexión
+            agregarProduc = new AgregarProduc(); 
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)

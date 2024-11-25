@@ -1,67 +1,70 @@
-﻿using System;
-using System.Data;
-using MySql.Data.MySqlClient;
+﻿using MySql.Data.MySqlClient;
+using System;
+using System.Collections.Generic;
+using PuntoDeVenta.Clases;
 
 namespace PuntoDeVenta
 {
     public class ReporteDeVentas
+
     {
-        // Cadena de conexión a la base de datos (ajusta los valores según tu configuración)
-        private string connectionString = "server=localhost;database=puntoventa;user=root;password=tu_contraseña";
+        private string connectionString = "server=localhost;database=tarea;user=root;password=root;";
 
-        /// <summary>
-        /// Obtiene las ventas realizadas en un mes y año específicos.
-        /// </summary>
-        /// <param name="mes">El mes (1 a 12) para filtrar las ventas.</param>
-        /// <param name="anio">El año para filtrar las ventas.</param>
-        /// <returns>Un DataTable con las ventas correspondientes.</returns>
-        public DataTable ObtenerVentasPorMes(int mes, int anio)
+        // Método para obtener las ventas por mes y año seleccionados
+        public List<Venta> ObtenerVentasPorMes(int mes, int anio)
         {
-            // Crear una tabla para almacenar los resultados
-            DataTable dtVentas = new DataTable();
+            List<Venta> ventas = new List<Venta>();
 
-            try
+            // Consulta SQL para obtener las ventas del mes y año seleccionados
+            string query = @"
+                SELECT v.idVenta, v.fechaVenta, v.totalVenta, 
+                       e.Nombre AS Empleado, c.Nombre AS Cliente
+                FROM Ventas v
+                JOIN USUARIOS e ON v.idEmpleado = e.id_usuario
+                JOIN clientesMayoristas c ON v.idCliente = c.idCliente
+                WHERE MONTH(v.fechaVenta) = @Mes AND YEAR(v.fechaVenta) = @Anio
+            ";
+
+            using (MySqlConnection conn = new MySqlConnection(connectionString))
             {
-                // Establecer la conexión con la base de datos
-                using (var connection = new MySqlConnection(connectionString))
+                conn.Open();
+                using (MySqlCommand cmd = new MySqlCommand(query, conn))
                 {
-                    connection.Open();
+                    cmd.Parameters.AddWithValue("@Mes", mes);
+                    cmd.Parameters.AddWithValue("@Anio", anio);
 
-                    // Consulta SQL para obtener las ventas
-                    string query = @"
-                        SELECT 
-                            v.Fecha AS 'Fecha de Venta',
-                            p.Nombre AS 'Producto',
-                            dv.Cantidad AS 'Cantidad',
-                            p.Precio AS 'Precio Unitario',
-                            (dv.Cantidad * p.Precio) AS 'Total'
-                        FROM Ventas v
-                        INNER JOIN DetalleVentas dv ON v.ID_Venta = dv.ID_Venta
-                        INNER JOIN Productos p ON dv.ID_Producto = p.ID_Producto
-                        WHERE MONTH(v.Fecha) = @mes AND YEAR(v.Fecha) = @anio
-                        ORDER BY v.Fecha ASC";
-
-                    // Crear el comando con los parámetros
-                    using (var command = new MySqlCommand(query, connection))
+                    using (MySqlDataReader reader = cmd.ExecuteReader())
                     {
-                        command.Parameters.AddWithValue("@mes", mes);
-                        command.Parameters.AddWithValue("@anio", anio);
-
-                        // Adaptador para llenar el DataTable
-                        using (var adapter = new MySqlDataAdapter(command))
+                        while (reader.Read())
                         {
-                            adapter.Fill(dtVentas);
+                            Venta venta = new Venta
+                            {
+                                Id = reader.GetInt32("idVenta"),
+                                FechaVenta = reader.GetDateTime("fechaVenta"),
+                                MontoTotal = reader.GetDecimal("totalVenta"),
+                                Empleado = reader.GetString("Empleado"),
+                                Cliente = reader.GetString("Cliente")
+                            };
+                            ventas.Add(venta);
                         }
                     }
                 }
             }
-            catch (Exception ex)
-            {
-                // Manejar errores de conexión o consulta
-                throw new Exception($"Error al obtener las ventas: {ex.Message}");
-            }
 
-            return dtVentas;
+            return ventas;
+        }
+
+    
+        public class Venta
+        {
+            public int Id { get; set; }
+            public string Empleado { get; set; }
+            public string Cliente { get; set; }
+            public DateTime FechaVenta { get; set; }
+            public decimal MontoTotal { get; set; }
         }
     }
+
 }
+
+

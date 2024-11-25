@@ -29,18 +29,20 @@
         private void InitializeComponent()
         {
             this.btnGenerarReporte = new System.Windows.Forms.Button();
-            this.comboBoxMes = new System.Windows.Forms.ComboBox();
-            this.numericUpDownAño = new System.Windows.Forms.NumericUpDown();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAño)).BeginInit();
+            this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
+            this.NoVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Empleado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CantProductos = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnGenerarReporte
             // 
-            this.btnGenerarReporte.Location = new System.Drawing.Point(561, 85);
+            this.btnGenerarReporte.Location = new System.Drawing.Point(553, 81);
             this.btnGenerarReporte.Name = "btnGenerarReporte";
             this.btnGenerarReporte.Size = new System.Drawing.Size(166, 42);
             this.btnGenerarReporte.TabIndex = 0;
@@ -48,80 +50,98 @@
             this.btnGenerarReporte.UseVisualStyleBackColor = true;
             this.btnGenerarReporte.Click += new System.EventHandler(this.button1_Click);
             // 
-            // comboBoxMes
-            // 
-            this.comboBoxMes.FormattingEnabled = true;
-            this.comboBoxMes.Location = new System.Drawing.Point(353, 105);
-            this.comboBoxMes.Name = "comboBoxMes";
-            this.comboBoxMes.Size = new System.Drawing.Size(121, 24);
-            this.comboBoxMes.TabIndex = 1;
-            this.comboBoxMes.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
-            // 
-            // numericUpDownAño
-            // 
-            this.numericUpDownAño.Location = new System.Drawing.Point(112, 107);
-            this.numericUpDownAño.Name = "numericUpDownAño";
-            this.numericUpDownAño.Size = new System.Drawing.Size(120, 22);
-            this.numericUpDownAño.TabIndex = 2;
-            this.numericUpDownAño.ValueChanged += new System.EventHandler(this.numericUpDownAño_ValueChanged);
-            // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(55, 199);
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.NoVenta,
+            this.Empleado,
+            this.Cliente,
+            this.CantProductos,
+            this.Total,
+            this.Fecha});
+            this.dataGridView1.Location = new System.Drawing.Point(12, 237);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(687, 191);
+            this.dataGridView1.Size = new System.Drawing.Size(787, 201);
             this.dataGridView1.TabIndex = 3;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
-            // label1
+            // monthCalendar1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(168, 28);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(28, 16);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Dia";
+            this.monthCalendar1.Location = new System.Drawing.Point(114, 18);
+            this.monthCalendar1.Name = "monthCalendar1";
+            this.monthCalendar1.TabIndex = 0;
+            this.monthCalendar1.DateChanged += new System.Windows.Forms.DateRangeEventHandler(this.monthCalendar1_DateChanged);
             // 
-            // label2
+            // NoVenta
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(406, 28);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(31, 16);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Año";
+            this.NoVenta.HeaderText = "No.Venta";
+            this.NoVenta.MinimumWidth = 6;
+            this.NoVenta.Name = "NoVenta";
+            this.NoVenta.Width = 125;
+            // 
+            // Empleado
+            // 
+            this.Empleado.HeaderText = "Empleado";
+            this.Empleado.MinimumWidth = 6;
+            this.Empleado.Name = "Empleado";
+            this.Empleado.Width = 125;
+            // 
+            // Cliente
+            // 
+            this.Cliente.HeaderText = "Cliente";
+            this.Cliente.MinimumWidth = 6;
+            this.Cliente.Name = "Cliente";
+            this.Cliente.Width = 125;
+            // 
+            // CantProductos
+            // 
+            this.CantProductos.HeaderText = "No.Productos";
+            this.CantProductos.MinimumWidth = 6;
+            this.CantProductos.Name = "CantProductos";
+            this.CantProductos.Width = 125;
+            // 
+            // Total
+            // 
+            this.Total.HeaderText = "Total";
+            this.Total.MinimumWidth = 6;
+            this.Total.Name = "Total";
+            this.Total.Width = 125;
+            // 
+            // Fecha
+            // 
+            this.Fecha.HeaderText = "Fecha";
+            this.Fecha.MinimumWidth = 6;
+            this.Fecha.Name = "Fecha";
+            this.Fecha.Width = 125;
             // 
             // ReporteVentas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.monthCalendar1);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.numericUpDownAño);
-            this.Controls.Add(this.comboBoxMes);
             this.Controls.Add(this.btnGenerarReporte);
             this.Name = "ReporteVentas";
             this.Text = "ReporteDeVentas";
-            this.Load += new System.EventHandler(this.ReporteVentas_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAño)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.Button btnGenerarReporte;
-        private System.Windows.Forms.ComboBox comboBoxMes;
-        private System.Windows.Forms.NumericUpDown numericUpDownAño;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.MonthCalendar monthCalendar1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NoVenta;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Empleado;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Cliente;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CantProductos;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Total;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Fecha;
     }
 }

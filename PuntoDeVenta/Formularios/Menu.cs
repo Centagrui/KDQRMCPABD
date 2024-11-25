@@ -77,10 +77,16 @@ namespace PuntoDeVenta
         {
             ReporteVentas reporte = new ReporteVentas();
             reporte.Show();
-              this.Close();
+            this.Close();
             
             
         }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            ReporteVentas reporte = new ReporteVentas();
+            reporte.Show();
+            this.Close();
+        }
     }
 }

@@ -1,25 +1,46 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using PuntoDeVenta;
+using PuntoDeVenta.Clases;
+using static PuntoDeVenta.ReporteDeVentas;
 
 namespace PuntoDeVenta.Formularios
 {
     public partial class ReporteVentas : Form
     {
-      
+        private ReporteDeVentas reporteDeVenta;
+
+        public ReporteVentas()
+        {
+            InitializeComponent();
+            reporteDeVenta = new ReporteDeVentas();  
+        }
 
         private void button1_Click(object sender, EventArgs e)
         {
+            int mes = monthCalendar1.SelectionStart.Month;
+            int anio = monthCalendar1.SelectionStart.Year;
 
+            // Obtener las ventas del mes seleccionado
+            var ventasDelMes = reporteDeVenta.ObtenerVentasPorMes(mes, anio);
+
+            // Mostrar las ventas en el DataGridView
+            MostrarVentasEnDataGridView(ventasDelMes);
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void MostrarVentasEnDataGridView(List<Venta> ventas)
+        {
+            dataGridView1.Rows.Clear();
+
+            // Agregar cada venta al DataGridView
+            foreach (var venta in ventas)
+            {
+                dataGridView1.Rows.Add(venta.Id, venta.Empleado, venta.Cliente, venta.FechaVenta.ToShortDateString(), venta.MontoTotal);
+            }
+        }
+
+        private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
         {
 
         }
@@ -28,22 +49,7 @@ namespace PuntoDeVenta.Formularios
         {
 
         }
-
-        private void numericUpDownAño_ValueChanged(object sender, EventArgs e)
-        {
-
-            numericUpDownAño.Minimum = 1;  // El valor mínimo es 1 (enero)
-            numericUpDownAño.Maximum = 12; // El valor máximo es 12 (diciembre)
-            numericUpDownAño.Value = 1;    // Inicialmente, el valor puede ser 1 (enero)
-
-            // También puedes personalizar el incremento
-            numericUpDownAño.Increment = 1; // Incrementar de uno en uno
-
-        }
-
-        private void ReporteVentas_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }
+
+

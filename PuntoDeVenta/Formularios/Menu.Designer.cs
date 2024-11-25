@@ -63,7 +63,7 @@
             // 
             this.btnProductos.BackgroundImage = global::PuntoDeVenta.Properties.Resources.productos;
             this.btnProductos.Font = new System.Drawing.Font("Microsoft Sans Serif", 72F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnProductos.Location = new System.Drawing.Point(183, 169);
+            this.btnProductos.Location = new System.Drawing.Point(196, 163);
             this.btnProductos.Margin = new System.Windows.Forms.Padding(4);
             this.btnProductos.Name = "btnProductos";
             this.btnProductos.Size = new System.Drawing.Size(116, 110);
@@ -97,7 +97,7 @@
             // btnGenerarReporte
             // 
             this.btnGenerarReporte.BackgroundImage = global::PuntoDeVenta.Properties.Resources.ReporteVen__1_;
-            this.btnGenerarReporte.Location = new System.Drawing.Point(341, 170);
+            this.btnGenerarReporte.Location = new System.Drawing.Point(364, 169);
             this.btnGenerarReporte.Margin = new System.Windows.Forms.Padding(4);
             this.btnGenerarReporte.Name = "btnGenerarReporte";
             this.btnGenerarReporte.Size = new System.Drawing.Size(120, 110);

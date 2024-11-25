@@ -41,6 +41,9 @@ namespace PuntoDeVenta.Formularios
 
         private void btnRegreso_Click(object sender, EventArgs e)
         {
+            //   Menu  menu = new Menu ();
+            //menu.Show();
+            this.Hide();
             this.Close();
         }
     }

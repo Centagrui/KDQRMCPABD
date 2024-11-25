@@ -19,7 +19,9 @@ namespace PuntoDeVenta.Formularios
 
         private void button1_Click(object sender, EventArgs e)
         {
-           
+            ReporteVentas reporte = new ReporteVentas();
+            reporte.Show();
+            this.Close();
 
         }
 
@@ -31,6 +33,11 @@ namespace PuntoDeVenta.Formularios
         private void button3_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnRegreso_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

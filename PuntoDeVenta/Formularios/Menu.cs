@@ -75,8 +75,8 @@ namespace PuntoDeVenta
 
         private void btnGenerarReporte_Click(object sender, EventArgs e)
         {
-            ReporteVentas reporte = new ReporteVentas();
-            reporte.Show();
+            TipoDeReporte tipo = new TipoDeReporte();
+            tipo.Show();
             this.Close();
             
             

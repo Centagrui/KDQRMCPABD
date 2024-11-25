@@ -37,6 +37,7 @@
             this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnRegreso = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -50,7 +51,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(649, 100);
+            this.button1.Location = new System.Drawing.Point(556, 85);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(152, 52);
             this.button1.TabIndex = 1;
@@ -118,11 +119,22 @@
             this.Fecha.Name = "Fecha";
             this.Fecha.Width = 125;
             // 
+            // btnRegreso
+            // 
+            this.btnRegreso.Location = new System.Drawing.Point(816, 88);
+            this.btnRegreso.Name = "btnRegreso";
+            this.btnRegreso.Size = new System.Drawing.Size(98, 50);
+            this.btnRegreso.TabIndex = 3;
+            this.btnRegreso.Text = "Regresar";
+            this.btnRegreso.UseVisualStyleBackColor = true;
+            this.btnRegreso.Click += new System.EventHandler(this.btnRegreso_Click);
+            // 
             // ReporteVentas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(979, 450);
+            this.Controls.Add(this.btnRegreso);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dateTimePicker1);
@@ -144,5 +156,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn Total;
         private System.Windows.Forms.DataGridViewTextBoxColumn Fecha;
+        private System.Windows.Forms.Button btnRegreso;
     }
 }

@@ -31,6 +31,7 @@
             this.btnMes = new System.Windows.Forms.Button();
             this.btnVentaE = new System.Windows.Forms.Button();
             this.btnTrimestral = new System.Windows.Forms.Button();
+            this.btnRegreso = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnMes
@@ -55,7 +56,7 @@
             // 
             // btnTrimestral
             // 
-            this.btnTrimestral.Location = new System.Drawing.Point(319, 292);
+            this.btnTrimestral.Location = new System.Drawing.Point(323, 248);
             this.btnTrimestral.Name = "btnTrimestral";
             this.btnTrimestral.Size = new System.Drawing.Size(134, 91);
             this.btnTrimestral.TabIndex = 2;
@@ -63,11 +64,22 @@
             this.btnTrimestral.UseVisualStyleBackColor = true;
             this.btnTrimestral.Click += new System.EventHandler(this.button3_Click);
             // 
+            // btnRegreso
+            // 
+            this.btnRegreso.Location = new System.Drawing.Point(114, 370);
+            this.btnRegreso.Name = "btnRegreso";
+            this.btnRegreso.Size = new System.Drawing.Size(94, 36);
+            this.btnRegreso.TabIndex = 3;
+            this.btnRegreso.Text = "Regresar";
+            this.btnRegreso.UseVisualStyleBackColor = true;
+            this.btnRegreso.Click += new System.EventHandler(this.btnRegreso_Click);
+            // 
             // TipoDeReporte
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnRegreso);
             this.Controls.Add(this.btnTrimestral);
             this.Controls.Add(this.btnVentaE);
             this.Controls.Add(this.btnMes);
@@ -82,5 +94,6 @@
         private System.Windows.Forms.Button btnMes;
         private System.Windows.Forms.Button btnVentaE;
         private System.Windows.Forms.Button btnTrimestral;
+        private System.Windows.Forms.Button btnRegreso;
     }
 }

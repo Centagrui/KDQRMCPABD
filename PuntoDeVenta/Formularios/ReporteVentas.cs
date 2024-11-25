@@ -66,12 +66,12 @@ namespace PuntoDeVenta.Formularios
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
-            // Opcional: Si deseas hacer algo al cambiar la fecha, impleméntalo aquí.
+           
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            // Opcional: Agrega lógica si deseas manejar clics en las celdas del DataGridView.
+            
         }
     }
 }

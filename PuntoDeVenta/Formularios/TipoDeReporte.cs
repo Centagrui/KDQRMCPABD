@@ -27,12 +27,16 @@ namespace PuntoDeVenta.Formularios
 
         private void button2_Click(object sender, EventArgs e)
         {
-
+            VentaPorEmpleado ventaPorEmpleado = new VentaPorEmpleado();
+            ventaPorEmpleado.Show();
+            this.Close();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-
+            VentaTrimestral ventaTrimestral = new VentaTrimestral();
+            ventaTrimestral.Show();
+            this.Close();
         }
 
         private void btnRegreso_Click(object sender, EventArgs e)

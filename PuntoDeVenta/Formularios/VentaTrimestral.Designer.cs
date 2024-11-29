@@ -28,47 +28,103 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.dataGridVieWReporte = new System.Windows.Forms.DataGridView();
+            this.Empledo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CantVentas = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnGraReporte = new System.Windows.Forms.Button();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.btnregreso = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridVieWReporte)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // dataGridVieWReporte
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(23, 226);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(753, 212);
-            this.dataGridView1.TabIndex = 0;
+            this.dataGridVieWReporte.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridVieWReporte.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Empledo,
+            this.Total,
+            this.CantVentas});
+            this.dataGridVieWReporte.Location = new System.Drawing.Point(23, 226);
+            this.dataGridVieWReporte.Name = "dataGridVieWReporte";
+            this.dataGridVieWReporte.RowHeadersWidth = 51;
+            this.dataGridVieWReporte.RowTemplate.Height = 24;
+            this.dataGridVieWReporte.Size = new System.Drawing.Size(753, 212);
+            this.dataGridVieWReporte.TabIndex = 0;
             // 
-            // button1
+            // Empledo
             // 
-            this.button1.Location = new System.Drawing.Point(622, 76);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.Empledo.HeaderText = "Empleaddo";
+            this.Empledo.MinimumWidth = 6;
+            this.Empledo.Name = "Empledo";
+            this.Empledo.Width = 125;
+            // 
+            // Total
+            // 
+            this.Total.HeaderText = "Total";
+            this.Total.MinimumWidth = 6;
+            this.Total.Name = "Total";
+            this.Total.Width = 125;
+            // 
+            // CantVentas
+            // 
+            this.CantVentas.HeaderText = "Caantidad de Ventas";
+            this.CantVentas.MinimumWidth = 6;
+            this.CantVentas.Name = "CantVentas";
+            this.CantVentas.Width = 125;
+            // 
+            // btnGraReporte
+            // 
+            this.btnGraReporte.Location = new System.Drawing.Point(556, 48);
+            this.btnGraReporte.Name = "btnGraReporte";
+            this.btnGraReporte.Size = new System.Drawing.Size(111, 49);
+            this.btnGraReporte.TabIndex = 1;
+            this.btnGraReporte.Text = "Generar Reporte";
+            this.btnGraReporte.UseVisualStyleBackColor = true;
+            this.btnGraReporte.Click += new System.EventHandler(this.btnGraReporte_Click);
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(127, 62);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(300, 22);
+            this.dateTimePicker1.TabIndex = 2;
+            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged_1);
+            // 
+            // btnregreso
+            // 
+            this.btnregreso.Location = new System.Drawing.Point(556, 126);
+            this.btnregreso.Name = "btnregreso";
+            this.btnregreso.Size = new System.Drawing.Size(118, 51);
+            this.btnregreso.TabIndex = 3;
+            this.btnregreso.Text = "Regresar";
+            this.btnregreso.UseVisualStyleBackColor = true;
+            this.btnregreso.Click += new System.EventHandler(this.btnregreso_Click);
             // 
             // VentaTrimestral
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.btnregreso);
+            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.btnGraReporte);
+            this.Controls.Add(this.dataGridVieWReporte);
             this.Name = "VentaTrimestral";
             this.Text = "VentaTrimestral";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridVieWReporte)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.DataGridView dataGridVieWReporte;
+        private System.Windows.Forms.Button btnGraReporte;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.Button btnregreso;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Empledo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Total;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CantVentas;
     }
 }

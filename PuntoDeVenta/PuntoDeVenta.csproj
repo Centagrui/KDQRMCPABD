@@ -101,6 +101,7 @@
     <Compile Include="Clases\AgregarProduc.cs" />
     <Compile Include="Clases\DetallesDeVenta.cs" />
     <Compile Include="Clases\ReporteDeVentas.cs" />
+    <Compile Include="Clases\VentaTrimestral.cs" />
     <Compile Include="Formularios\AgregarProducto.cs">
       <SubType>Form</SubType>
     </Compile>

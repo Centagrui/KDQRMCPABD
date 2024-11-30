@@ -197,6 +197,9 @@
     <EmbeddedResource Include="Formularios\TipoDeReporte.resx">
       <DependentUpon>TipoDeReporte.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\VentaPorEmpleado.resx">
+      <DependentUpon>VentaPorEmpleado.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\VentaTrimestral.resx">
       <DependentUpon>VentaTrimestral.cs</DependentUpon>
     </EmbeddedResource>

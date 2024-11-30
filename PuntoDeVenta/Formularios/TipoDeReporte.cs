@@ -44,7 +44,7 @@ namespace PuntoDeVenta.Formularios
         //    Menu  menu = new Menu ();
         //    menu.Show();
             this.Hide();
-            this.Close();
+            
         }
     }
 }

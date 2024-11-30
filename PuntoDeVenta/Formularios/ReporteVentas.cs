@@ -76,8 +76,8 @@ namespace PuntoDeVenta.Formularios
 
         private void btnRegreso_Click(object sender, EventArgs e)
         {
-          
-            this.Close();    
+
+           
                 
         }
     }

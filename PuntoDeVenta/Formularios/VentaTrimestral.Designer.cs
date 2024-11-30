@@ -35,6 +35,7 @@
             this.btnGraReporte = new System.Windows.Forms.Button();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.btnregreso = new System.Windows.Forms.Button();
+            this.mySqlDataAdapter1 = new MySql.Data.MySqlClient.MySqlDataAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridVieWReporte)).BeginInit();
             this.SuspendLayout();
             // 
@@ -51,6 +52,7 @@
             this.dataGridVieWReporte.RowTemplate.Height = 24;
             this.dataGridVieWReporte.Size = new System.Drawing.Size(753, 212);
             this.dataGridVieWReporte.TabIndex = 0;
+            this.dataGridVieWReporte.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridVieWReporte_CellContentClick);
             // 
             // Empledo
             // 
@@ -89,7 +91,7 @@
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(300, 22);
             this.dateTimePicker1.TabIndex = 2;
-            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged_1);
+            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
             // btnregreso
             // 
@@ -100,6 +102,13 @@
             this.btnregreso.Text = "Regresar";
             this.btnregreso.UseVisualStyleBackColor = true;
             this.btnregreso.Click += new System.EventHandler(this.btnregreso_Click);
+            // 
+            // mySqlDataAdapter1
+            // 
+            this.mySqlDataAdapter1.DeleteCommand = null;
+            this.mySqlDataAdapter1.InsertCommand = null;
+            this.mySqlDataAdapter1.SelectCommand = null;
+            this.mySqlDataAdapter1.UpdateCommand = null;
             // 
             // VentaTrimestral
             // 
@@ -126,5 +135,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Empledo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Total;
         private System.Windows.Forms.DataGridViewTextBoxColumn CantVentas;
+        private MySql.Data.MySqlClient.MySqlDataAdapter mySqlDataAdapter1;
     }
 }

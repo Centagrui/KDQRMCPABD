@@ -1,7 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Data;
-
 namespace PuntoDeVenta.Clases
 {
     internal class ReporteVentas
@@ -12,10 +11,10 @@ namespace PuntoDeVenta.Clases
         {
             DataTable tablaVentas = new DataTable();
             string query = @"SELECT NombreEmpleado, COUNT(noVenta) AS TotalVentas, 
-                             SUM(totalVenta) AS MontoTotal
-                             FROM detallesVenta
-                             WHERE fechaVenta BETWEEN @FechaInicio AND @FechaFin
-                             GROUP BY NombreEmpleado";
+                         SUM(totalVenta) AS MontoTotal
+                         FROM detallesVenta
+                         WHERE fechaVenta BETWEEN @FechaInicio AND @FechaFin
+                         GROUP BY NombreEmpleado";
 
             using (MySqlConnection conexion = new MySqlConnection(connectionString))
             {
@@ -35,7 +34,6 @@ namespace PuntoDeVenta.Clases
                 }
                 catch (Exception ex)
                 {
-                    // Manejar errores de conexión o consulta
                     Console.WriteLine("Error: " + ex.Message);
                 }
             }
@@ -43,4 +41,6 @@ namespace PuntoDeVenta.Clases
             return tablaVentas;
         }
     }
+
 }
+

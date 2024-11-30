@@ -10,7 +10,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 namespace PuntoDeVenta.Formularios
-
 {
     public partial class VentaTrimestral : Form
     {
@@ -19,44 +18,40 @@ namespace PuntoDeVenta.Formularios
             InitializeComponent();
         }
 
-        private void dataGridVieWReporte_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            // Este evento puede quedar vacío si no necesitas manejar acciones específicas aquí
-        }
-
+        // Evento del botón para generar el reporte
         private void btnGraReporte_Click(object sender, EventArgs e)
         {
             // Obtener las fechas seleccionadas para el trimestre
             DateTime fechaInicio = dateTimePicker1.Value.Date;
             DateTime fechaFin = fechaInicio.AddMonths(3).AddDays(-1);
 
-            // Obtener datos de ventas por empleado
-            var tabla = ObtenerVentasPorEmpleado(fechaInicio, fechaFin);
+            // Llamar al método para obtener las ventas por empleado
+            DataTable tabla = ObtenerVentasPorEmpleado(fechaInicio, fechaFin);
 
             // Mostrar los datos en el DataGridView
             dataGridVieWReporte.DataSource = tabla;
+
+            // Configurar encabezados de las columnas
+            dataGridVieWReporte.Columns["Empleado"].HeaderText = "Empleado";
+            dataGridVieWReporte.Columns["CantidadVentas"].HeaderText = "Cantidad de Ventas";
+            dataGridVieWReporte.Columns["TotalVentas"].HeaderText = "Total de Ventas";
         }
 
-        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
-        {
-            // Evento para manejar cambios en el DateTimePicker (puede quedar vacío si no es necesario)
-        }
-
+        // Evento del botón para cerrar el formulario
         private void btnregreso_Click(object sender, EventArgs e)
         {
-            // Volver al menú principal (descomentar si tienes el formulario Menu)
-            // Menu menu = new Menu();
-            // menu.Show();
             this.Close();
         }
 
-        // Método para obtener ventas por empleado
+        // Método para obtener las ventas por empleado desde la base de datos
         private DataTable ObtenerVentasPorEmpleado(DateTime fechaInicio, DateTime fechaFin)
         {
             DataTable tablaVentas = new DataTable();
-            string connectionString ="server=localhost;database=tarea;user=root;password=root; ";
-            string query = @"SELECT NombreEmpleado, COUNT(noVenta) AS TotalVentas, 
-                             SUM(totalVenta) AS MontoTotal
+            string connectionString = "server=localhost;database=tarea;user=root;password=root;";
+            string query = @"SELECT 
+                                NombreEmpleado AS Empleado, 
+                                COUNT(noVenta) AS CantidadVentas, 
+                                SUM(totalVenta) AS TotalVentas
                              FROM detallesVenta
                              WHERE fechaVenta BETWEEN @FechaInicio AND @FechaFin
                              GROUP BY NombreEmpleado";
@@ -86,9 +81,13 @@ namespace PuntoDeVenta.Formularios
             return tablaVentas;
         }
 
-        private void dateTimePicker1_ValueChanged_1(object sender, EventArgs e)
+        // Eventos vacíos (puedes eliminarlos si no los necesitas)
+        private void dataGridVieWReporte_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+        }
 
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
         }
     }
 }

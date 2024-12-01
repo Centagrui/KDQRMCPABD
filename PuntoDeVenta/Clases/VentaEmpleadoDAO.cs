@@ -20,14 +20,14 @@ namespace PuntoDeVenta.Clases
             DataTable dtVentas = new DataTable();
 
             string query = @"
-        SELECT 
-            u.Nombre AS Empleado, 
-            COUNT(dv.noVenta) AS CantidadVentas, 
-            SUM(dv.totalVenta) AS TotalVentas
-        FROM detallesVenta dv
-        JOIN USUARIOS u ON u.id_usuario = dv.idEmpleado
-        WHERE MONTH(dv.fechaVenta) = @Mes AND YEAR(dv.fechaVenta) = @Anio
-        GROUP BY u.id_usuario";
+    SELECT 
+        u.Nombre AS Empleado, 
+        SUM(dv.totalVenta) AS Ventas,
+        SUM(dv.cantidadProductos) AS CantidadDeVentas
+    FROM detallesVenta dv
+    JOIN USUARIOS u ON u.id_usuario = dv.idEmpleado
+    WHERE MONTH(dv.fechaVenta) = @Mes AND YEAR(dv.fechaVenta) = @Anio
+    GROUP BY u.Nombre";
 
             try
             {
@@ -52,10 +52,9 @@ namespace PuntoDeVenta.Clases
 
             return dtVentas;
         }
+
     }
-
 }
-
 
 
 

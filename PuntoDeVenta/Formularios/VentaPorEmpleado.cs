@@ -36,14 +36,17 @@ namespace PuntoDeVenta.Formularios
                 return;
             }
 
-            int mes = comboBoxMes.SelectedIndex + 1;
+            int mes = comboBoxMes.SelectedIndex + 1; // +1 porque el índice comienza en 0
             int anio = int.Parse(comboBoxAnio.SelectedItem.ToString());
 
             try
             {
-                // Mostrar un mensaje de carga mientras se obtiene la información
                 var ventas = ventaEmpleado.ObtenerVentasPorMes(mes, anio);
                 dataGridViewVentas.DataSource = ventas;
+                if (ventas.Rows.Count == 0)
+                {
+                    MessageBox.Show("No hay datos para el mes y año seleccionados.");
+                }
             }
             catch (ApplicationException ex)
             {
@@ -54,7 +57,6 @@ namespace PuntoDeVenta.Formularios
                 MessageBox.Show($"Error inesperado: {ex.Message}");
             }
         }
-
 
         private void comboBoxAnio_SelectedIndexChanged(object sender, EventArgs e)
         {

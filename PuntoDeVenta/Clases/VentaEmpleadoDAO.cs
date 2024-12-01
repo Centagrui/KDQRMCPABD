@@ -11,7 +11,6 @@ namespace PuntoDeVenta.Clases
 {
 
 
-
     public class VentaEmpleadoDAO
     {
         private string connectionString = "server=localhost;database=tarea;user=root;password=root;";

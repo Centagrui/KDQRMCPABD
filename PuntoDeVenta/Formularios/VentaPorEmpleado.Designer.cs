@@ -32,14 +32,17 @@
             this.comboBoxMes = new System.Windows.Forms.ComboBox();
             this.comboBoxAnio = new System.Windows.Forms.ComboBox();
             this.dataGridViewVentas = new System.Windows.Forms.DataGridView();
+            this.Empleado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CantidadDeVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewVentas)).BeginInit();
             this.SuspendLayout();
             // 
             // btnMostrarVentas
             // 
-            this.btnMostrarVentas.Location = new System.Drawing.Point(644, 27);
+            this.btnMostrarVentas.Location = new System.Drawing.Point(618, 27);
             this.btnMostrarVentas.Name = "btnMostrarVentas";
-            this.btnMostrarVentas.Size = new System.Drawing.Size(101, 50);
+            this.btnMostrarVentas.Size = new System.Drawing.Size(127, 62);
             this.btnMostrarVentas.TabIndex = 0;
             this.btnMostrarVentas.Text = "button1";
             this.btnMostrarVentas.UseVisualStyleBackColor = true;
@@ -66,12 +69,37 @@
             // dataGridViewVentas
             // 
             this.dataGridViewVentas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewVentas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Empleado,
+            this.Total,
+            this.CantidadDeVenta});
             this.dataGridViewVentas.Location = new System.Drawing.Point(12, 212);
             this.dataGridViewVentas.Name = "dataGridViewVentas";
             this.dataGridViewVentas.RowHeadersWidth = 51;
             this.dataGridViewVentas.RowTemplate.Height = 24;
             this.dataGridViewVentas.Size = new System.Drawing.Size(776, 232);
             this.dataGridViewVentas.TabIndex = 4;
+            // 
+            // Empleado
+            // 
+            this.Empleado.HeaderText = "Empleado";
+            this.Empleado.MinimumWidth = 6;
+            this.Empleado.Name = "Empleado";
+            this.Empleado.Width = 125;
+            // 
+            // Total
+            // 
+            this.Total.HeaderText = "Total";
+            this.Total.MinimumWidth = 6;
+            this.Total.Name = "Total";
+            this.Total.Width = 125;
+            // 
+            // CantidadDeVenta
+            // 
+            this.CantidadDeVenta.HeaderText = "CantidadDeVentas";
+            this.CantidadDeVenta.MinimumWidth = 6;
+            this.CantidadDeVenta.Name = "CantidadDeVenta";
+            this.CantidadDeVenta.Width = 125;
             // 
             // VentaPorEmpleado
             // 
@@ -95,5 +123,8 @@
         private System.Windows.Forms.ComboBox comboBoxMes;
         private System.Windows.Forms.ComboBox comboBoxAnio;
         private System.Windows.Forms.DataGridView dataGridViewVentas;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Empleado;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Total;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CantidadDeVenta;
     }
 }

@@ -55,7 +55,6 @@
             this.comboBoxMes.Name = "comboBoxMes";
             this.comboBoxMes.Size = new System.Drawing.Size(121, 24);
             this.comboBoxMes.TabIndex = 2;
-            this.comboBoxMes.SelectedIndexChanged += new System.EventHandler(this.comboBoxMes_SelectedIndexChanged);
             // 
             // comboBoxAnio
             // 
@@ -79,7 +78,6 @@
             this.dataGridViewVentas.RowTemplate.Height = 24;
             this.dataGridViewVentas.Size = new System.Drawing.Size(776, 232);
             this.dataGridViewVentas.TabIndex = 4;
-            this.dataGridViewVentas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewVentas_CellContentClick);
             // 
             // Empleado
             // 
@@ -90,14 +88,14 @@
             // 
             // Total
             // 
-            this.Total.HeaderText = "Total";
+            this.Total.HeaderText = "CantidadDeVentas";
             this.Total.MinimumWidth = 6;
             this.Total.Name = "Total";
             this.Total.Width = 125;
             // 
             // CantidadDeVenta
             // 
-            this.CantidadDeVenta.HeaderText = "CantidadDeVentas";
+            this.CantidadDeVenta.HeaderText = "TotalDeVentas";
             this.CantidadDeVenta.MinimumWidth = 6;
             this.CantidadDeVenta.Name = "CantidadDeVenta";
             this.CantidadDeVenta.Width = 125;

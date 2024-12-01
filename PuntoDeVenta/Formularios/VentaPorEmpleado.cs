@@ -1,4 +1,5 @@
-﻿using PuntoDeVenta.Clases;
+﻿using MySql.Data.MySqlClient;
+using PuntoDeVenta.Clases;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -49,13 +50,12 @@ namespace PuntoDeVenta.Formularios
                 if (ventas == null || ventas.Count == 0)
                 {
                     MessageBox.Show("No hay datos para el mes y año seleccionados.");
-                    dataGridViewVentas.DataSource = null;
+                    LlenarDataGridView(null); // Limpiar datos
                     return;
                 }
 
                 // Mostrar los datos en el DataGridView
-                dataGridViewVentas.AutoGenerateColumns = true;
-                dataGridViewVentas.DataSource = ventas;
+                LlenarDataGridView(ventas);
             }
             catch (ApplicationException ex)
             {
@@ -67,10 +67,92 @@ namespace PuntoDeVenta.Formularios
             }
         }
 
+        private void LlenarDataGridView(List<VentaEmpleado> ventas)
+        {
+            if (dataGridViewVentas.Columns.Count == 0)
+            {
+                dataGridViewVentas.Columns.Add("Empleado", "Empleado");
+                dataGridViewVentas.Columns.Add("Cantidad", "Cantidad de Productos");
+                dataGridViewVentas.Columns.Add("Total", "Monto Total");
+            }
 
+            dataGridViewVentas.Rows.Clear();
 
+            if (ventas != null)
+            {
+                foreach (var venta in ventas)
+                {
+                    dataGridViewVentas.Rows.Add(
+                        venta.Empleado,
+                        venta.CantidadProductos,
+                        venta.MontoTotal
+                    );
+                }
+            }
+        }
 
         private void comboBoxAnio_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+    }
+
+    // Clase para acceso a datos
+    public class VentaEmpleadoDAO
+    {
+        private string connectionString = "server=localhost;database=tarea;user=root;password=root;";
+
+        public List<VentaEmpleado> ObtenerVentasPorMes(int anio, int mes)
+        {
+            var ventas = new List<VentaEmpleado>();
+
+            string query = @"
+           SELECT 
+    dv.nombreempleado AS Empleado, 
+    SUM(dv.totalVenta) AS MontoTotal,
+    SUM(dv.cantidadProductos) AS CantidadProductos
+FROM detallesVenta dv
+WHERE MONTH(dv.fechaVenta) = @Mes AND YEAR(dv.fechaVenta) = @Anio
+GROUP BY dv.nombreempleado";
+
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(connectionString))
+                {
+                    conn.Open();
+                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@Mes", mes);
+                        cmd.Parameters.AddWithValue("@Anio", anio);
+
+                        using (MySqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                ventas.Add(new VentaEmpleado
+                                {
+                                    Empleado = reader.GetString("Empleado"),
+                                    CantidadProductos = reader.GetInt32("CantidadProductos"),
+                                    MontoTotal = reader.GetDecimal("MontoTotal")
+                                });
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException($"Error al obtener ventas: {ex.Message}", ex);
+            }
+
+            return ventas;
+        }
+    
+
+    
+
+
+    private void comboBoxAnio_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

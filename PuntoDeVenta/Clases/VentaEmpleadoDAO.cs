@@ -11,13 +11,6 @@ using static PuntoDeVenta.ReporteDeVentas;
 
 namespace PuntoDeVenta.Clases
 {
-    public class VentaEmpleado
-    {
-        public string Empleado { get; set; }
-        public int CantidadProductos { get; set; }
-        public decimal MontoTotal { get; set; }
-    }
-
     public class VentaEmpleadoDAO
     {
         private string connectionString = "server=localhost;database=tarea;user=root;password=root;";
@@ -27,14 +20,13 @@ namespace PuntoDeVenta.Clases
             var ventas = new List<VentaEmpleado>();
 
             string query = @"
-        SELECT 
-            u.Nombre AS Empleado, 
-            SUM(dv.totalVenta) AS MontoTotal,
-            SUM(dv.cantidadProductos) AS CantidadProductos
-        FROM detallesVenta dv
-        JOIN USUARIOS u ON u.id_usuario = dv.idEmpleado
-        WHERE MONTH(dv.fechaVenta) = @Mes AND YEAR(dv.fechaVenta) = @Anio
-        GROUP BY u.Nombre";
+            SELECT 
+    dv.nombreempleado AS Empleado, 
+    SUM(dv.totalVenta) AS MontoTotal,
+    SUM(dv.cantidadProductos) AS CantidadProductos
+FROM detallesVenta dv
+WHERE MONTH(dv.fechaVenta) = @Mes AND YEAR(dv.fechaVenta) = @Anio
+GROUP BY dv.nombreempleado";
 
             try
             {
@@ -69,6 +61,17 @@ namespace PuntoDeVenta.Clases
             return ventas;
         }
     }
+
+    // Clase modelo
+    public class VentaEmpleado
+    {
+        public string Empleado { get; set; }
+        public int CantidadProductos { get; set; }
+        public decimal MontoTotal { get; set; }
+    }
+
+
+
 }
 
 

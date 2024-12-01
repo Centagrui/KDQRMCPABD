@@ -79,6 +79,7 @@
             this.dataGridViewVentas.RowTemplate.Height = 24;
             this.dataGridViewVentas.Size = new System.Drawing.Size(776, 232);
             this.dataGridViewVentas.TabIndex = 4;
+            this.dataGridViewVentas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewVentas_CellContentClick);
             // 
             // Empleado
             // 

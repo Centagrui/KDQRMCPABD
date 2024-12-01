@@ -13,19 +13,21 @@ namespace PuntoDeVenta.Formularios
 {
     public partial class VentaPorEmpleado : Form
     {
-        private VentaEmpleadoDAO ventaEmpleado = new VentaEmpleadoDAO();
+        private VentaEmpleadoDAO ventaEmpleadoDAO = new VentaEmpleadoDAO();
+
         public VentaPorEmpleado()
         {
             InitializeComponent();
-            // Cargar meses y años en ComboBox
+
+            // Configurar ComboBox de Meses y Años
             for (int i = 1; i <= 12; i++)
                 comboBoxMes.Items.Add(new DateTime(1, i, 1).ToString("MMMM"));
 
             for (int i = 2020; i <= DateTime.Now.Year; i++)
                 comboBoxAnio.Items.Add(i);
 
-            comboBoxMes.SelectedIndex = 0; // Selecciona enero por defecto
-            comboBoxAnio.SelectedIndex = comboBoxAnio.Items.Count - 1; // Selecciona el año actual por defecto
+            comboBoxMes.SelectedIndex = 0; // Enero por defecto
+            comboBoxAnio.SelectedIndex = comboBoxAnio.Items.Count - 1; // Año actual por defecto
         }
 
         private void btnMostrarVentas_Click(object sender, EventArgs e)
@@ -36,17 +38,24 @@ namespace PuntoDeVenta.Formularios
                 return;
             }
 
-            int mes = comboBoxMes.SelectedIndex + 1; // +1 porque el índice comienza en 0
+            int mes = comboBoxMes.SelectedIndex + 1; // Meses de 1 a 12
             int anio = int.Parse(comboBoxAnio.SelectedItem.ToString());
 
             try
             {
-                var ventas = ventaEmpleado.ObtenerVentasPorMes(mes, anio);
-                dataGridViewVentas.DataSource = ventas;
-                if (ventas.Rows.Count == 0)
+                // Obtener ventas desde la base de datos
+                var ventas = ventaEmpleadoDAO.ObtenerVentasPorMes(anio, mes);
+
+                if (ventas == null || ventas.Count == 0)
                 {
                     MessageBox.Show("No hay datos para el mes y año seleccionados.");
+                    dataGridViewVentas.DataSource = null;
+                    return;
                 }
+
+                // Mostrar los datos en el DataGridView
+                dataGridViewVentas.AutoGenerateColumns = true;
+                dataGridViewVentas.DataSource = ventas;
             }
             catch (ApplicationException ex)
             {
@@ -58,6 +67,9 @@ namespace PuntoDeVenta.Formularios
             }
         }
 
+
+
+
         private void comboBoxAnio_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -67,6 +79,12 @@ namespace PuntoDeVenta.Formularios
         {
 
         }
+
+        private void dataGridViewVentas_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+    
     }
 }
 

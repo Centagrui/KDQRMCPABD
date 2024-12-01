@@ -6,28 +6,35 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
+using Mysqlx.Cursor;
+using static PuntoDeVenta.ReporteDeVentas;
 
 namespace PuntoDeVenta.Clases
 {
-
+    public class VentaEmpleado
+    {
+        public string Empleado { get; set; }
+        public int CantidadProductos { get; set; }
+        public decimal MontoTotal { get; set; }
+    }
 
     public class VentaEmpleadoDAO
     {
         private string connectionString = "server=localhost;database=tarea;user=root;password=root;";
 
-        public DataTable ObtenerVentasPorMes(int mes, int anio)
+        public List<VentaEmpleado> ObtenerVentasPorMes(int anio, int mes)
         {
-            DataTable dtVentas = new DataTable();
+            var ventas = new List<VentaEmpleado>();
 
             string query = @"
-    SELECT 
-        u.Nombre AS Empleado, 
-        SUM(dv.totalVenta) AS Ventas,
-        SUM(dv.cantidadProductos) AS CantidadDeVentas
-    FROM detallesVenta dv
-    JOIN USUARIOS u ON u.id_usuario = dv.idEmpleado
-    WHERE MONTH(dv.fechaVenta) = @Mes AND YEAR(dv.fechaVenta) = @Anio
-    GROUP BY u.Nombre";
+        SELECT 
+            u.Nombre AS Empleado, 
+            SUM(dv.totalVenta) AS MontoTotal,
+            SUM(dv.cantidadProductos) AS CantidadProductos
+        FROM detallesVenta dv
+        JOIN USUARIOS u ON u.id_usuario = dv.idEmpleado
+        WHERE MONTH(dv.fechaVenta) = @Mes AND YEAR(dv.fechaVenta) = @Anio
+        GROUP BY u.Nombre";
 
             try
             {
@@ -36,26 +43,33 @@ namespace PuntoDeVenta.Clases
                     conn.Open();
                     using (MySqlCommand cmd = new MySqlCommand(query, conn))
                     {
-                        cmd.Parameters.Add("@Mes", MySqlDbType.Int32).Value = mes;
-                        cmd.Parameters.Add("@Anio", MySqlDbType.Int32).Value = anio;
+                        cmd.Parameters.AddWithValue("@Mes", mes);
+                        cmd.Parameters.AddWithValue("@Anio", anio);
 
-                        MySqlDataAdapter da = new MySqlDataAdapter(cmd);
-                        da.Fill(dtVentas);
+                        using (MySqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                ventas.Add(new VentaEmpleado
+                                {
+                                    Empleado = reader.GetString("Empleado"),
+                                    CantidadProductos = reader.GetInt32("CantidadProductos"),
+                                    MontoTotal = reader.GetDecimal("MontoTotal")
+                                });
+                            }
+                        }
                     }
                 }
             }
             catch (Exception ex)
             {
-                // Manejo de excepciones
-                throw new ApplicationException("Ocurrió un error al obtener las ventas por mes.", ex);
+                throw new ApplicationException($"Error al obtener ventas: {ex.Message}", ex);
             }
 
-            return dtVentas;
+            return ventas;
         }
-
     }
 }
-
 
 
 

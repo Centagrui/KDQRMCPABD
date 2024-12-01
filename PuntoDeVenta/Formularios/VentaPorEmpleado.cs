@@ -13,10 +13,11 @@ namespace PuntoDeVenta.Formularios
 {
     public partial class VentaPorEmpleado : Form
     {
-        private VentaEmpleado ventaEmpleado = new VentaEmpleado();
+        private VentaEmpleadoDAO ventaEmpleado = new VentaEmpleadoDAO();
         public VentaPorEmpleado()
         {
             InitializeComponent();
+            // Cargar meses y años en ComboBox
             for (int i = 1; i <= 12; i++)
                 comboBoxMes.Items.Add(new DateTime(1, i, 1).ToString("MMMM"));
 
@@ -24,23 +25,7 @@ namespace PuntoDeVenta.Formularios
                 comboBoxAnio.Items.Add(i);
 
             comboBoxMes.SelectedIndex = 0; // Selecciona enero por defecto
-            comboBoxAnio.SelectedIndex = comboBoxAnio.Items.Count - 1;
-
-        }
-
-        private void dgvVentas_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void comboBoxMes_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void comboBoxAnio_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
+            comboBoxAnio.SelectedIndex = comboBoxAnio.Items.Count - 1; // Selecciona el año actual por defecto
         }
 
         private void btnMostrarVentas_Click(object sender, EventArgs e)
@@ -54,10 +39,32 @@ namespace PuntoDeVenta.Formularios
             int mes = comboBoxMes.SelectedIndex + 1;
             int anio = int.Parse(comboBoxAnio.SelectedItem.ToString());
 
-            DataTable ventas = ventaEmpleado.ObtenerVentasPorMes(mes, anio);
-            dataGridViewVentas.DataSource = ventas;
+            try
+            {
+                // Mostrar un mensaje de carga mientras se obtiene la información
+                var ventas = ventaEmpleado.ObtenerVentasPorMes(mes, anio);
+                dataGridViewVentas.DataSource = ventas;
+            }
+            catch (ApplicationException ex)
+            {
+                MessageBox.Show($"Ocurrió un error: {ex.Message}");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error inesperado: {ex.Message}");
+            }
+        }
+
+
+        private void comboBoxAnio_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBoxMes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
-
 }
 

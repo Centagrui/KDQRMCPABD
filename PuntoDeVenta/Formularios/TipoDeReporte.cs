@@ -36,14 +36,14 @@ namespace PuntoDeVenta.Formularios
         {
             VentaTrimestral ventaTrimestral = new VentaTrimestral();
             ventaTrimestral.Show();
-            this.Close();
+         
         }
 
         private void btnRegreso_Click(object sender, EventArgs e)
         {
         //    Menu  menu = new Menu ();
         //    menu.Show();
-            this.Hide();
+       
             
         }
     }

@@ -28,24 +28,29 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridVieWReporte = new System.Windows.Forms.DataGridView();
+            this.dataGridViewReporte = new System.Windows.Forms.DataGridView();
             this.btnGraReporte = new System.Windows.Forms.Button();
             this.btnregreso = new System.Windows.Forms.Button();
             this.mySqlDataAdapter1 = new MySql.Data.MySqlClient.MySqlDataAdapter();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridVieWReporte)).BeginInit();
+            this.comboBoxAnio = new System.Windows.Forms.ComboBox();
+            this.Producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Venta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewReporte)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridVieWReporte
+            // dataGridViewReporte
             // 
-            this.dataGridVieWReporte.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridVieWReporte.Location = new System.Drawing.Point(23, 226);
-            this.dataGridVieWReporte.Name = "dataGridVieWReporte";
-            this.dataGridVieWReporte.RowHeadersWidth = 51;
-            this.dataGridVieWReporte.RowTemplate.Height = 24;
-            this.dataGridVieWReporte.Size = new System.Drawing.Size(847, 212);
-            this.dataGridVieWReporte.TabIndex = 0;
-            this.dataGridVieWReporte.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridVieWReporte_CellContentClick);
+            this.dataGridViewReporte.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewReporte.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Producto,
+            this.Venta});
+            this.dataGridViewReporte.Location = new System.Drawing.Point(23, 226);
+            this.dataGridViewReporte.Name = "dataGridViewReporte";
+            this.dataGridViewReporte.RowHeadersWidth = 51;
+            this.dataGridViewReporte.RowTemplate.Height = 24;
+            this.dataGridViewReporte.Size = new System.Drawing.Size(847, 212);
+            this.dataGridViewReporte.TabIndex = 0;
+            this.dataGridViewReporte.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridVieWReporte_CellContentClick);
             // 
             // btnGraReporte
             // 
@@ -74,37 +79,53 @@
             this.mySqlDataAdapter1.SelectCommand = null;
             this.mySqlDataAdapter1.UpdateCommand = null;
             // 
-            // comboBox1
+            // comboBoxAnio
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(39, 35);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(218, 24);
-            this.comboBox1.TabIndex = 4;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.comboBoxAnio.FormattingEnabled = true;
+            this.comboBoxAnio.Location = new System.Drawing.Point(102, 48);
+            this.comboBoxAnio.Name = "comboBoxAnio";
+            this.comboBoxAnio.Size = new System.Drawing.Size(218, 24);
+            this.comboBoxAnio.TabIndex = 4;
+            this.comboBoxAnio.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // Producto
+            // 
+            this.Producto.HeaderText = "Producto";
+            this.Producto.MinimumWidth = 6;
+            this.Producto.Name = "Producto";
+            this.Producto.Width = 125;
+            // 
+            // Venta
+            // 
+            this.Venta.HeaderText = "Venta";
+            this.Venta.MinimumWidth = 6;
+            this.Venta.Name = "Venta";
+            this.Venta.Width = 125;
             // 
             // VentaTrimestral
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(882, 450);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.comboBoxAnio);
             this.Controls.Add(this.btnregreso);
             this.Controls.Add(this.btnGraReporte);
-            this.Controls.Add(this.dataGridVieWReporte);
+            this.Controls.Add(this.dataGridViewReporte);
             this.Name = "VentaTrimestral";
             this.Text = "VentaTrimestral";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridVieWReporte)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewReporte)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridVieWReporte;
+        private System.Windows.Forms.DataGridView dataGridViewReporte;
         private System.Windows.Forms.Button btnGraReporte;
         private System.Windows.Forms.Button btnregreso;
         private MySql.Data.MySqlClient.MySqlDataAdapter mySqlDataAdapter1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboBoxAnio;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Producto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Venta;
     }
 }

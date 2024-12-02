@@ -77,6 +77,7 @@ namespace PuntoDeVenta
         {
             TipoDeReporte tipo = new TipoDeReporte();
             tipo.Show();
+            this.Hide();
             this.Close();
             
             

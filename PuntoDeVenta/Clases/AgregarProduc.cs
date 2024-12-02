@@ -22,31 +22,43 @@ namespace PuntoDeVenta
 
         public void AgregarProducto(string nombre, string codigo, string descripcion, string precioText, string existenciaText, DataGridView dataGridView)
         {
-            // Verificar si los campos están llenos
-            if (string.IsNullOrEmpty(nombre) || string.IsNullOrEmpty(codigo) || string.IsNullOrEmpty(descripcion) ||
-                string.IsNullOrEmpty(precioText) || string.IsNullOrEmpty(existenciaText))
+            // Validación de campos vacíos
+            if (string.IsNullOrWhiteSpace(nombre) || string.IsNullOrWhiteSpace(descripcion) ||
+                string.IsNullOrWhiteSpace(precioText) || string.IsNullOrWhiteSpace(existenciaText))
             {
-                MessageBox.Show("Todos los campos deben ser llenados.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Todos los campos deben ser llenados correctamente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            // Convertir precio y existencia a sus tipos correspondientes
-            decimal precio;
-            int existencia;
-
-            if (!decimal.TryParse(precioText, out precio))
+            // Validar que el nombre no contenga solo espacios
+            if (string.IsNullOrWhiteSpace(nombre))
             {
-                MessageBox.Show("El precio debe ser un valor numérico válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("El nombre del producto no puede estar vacío o contener solo espacios en blanco.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            if (!int.TryParse(existenciaText, out existencia))
+            // Validar precio
+            if (!decimal.TryParse(precioText, out decimal precio) || precio < 0)
+            {
+                MessageBox.Show("El precio debe ser un número válido mayor o igual a cero.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Validar existencia
+            if (!int.TryParse(existenciaText, out int existencia) || existencia < 0)
             {
                 MessageBox.Show("La existencia debe ser un número entero válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            // Insertar el producto en la base de datos
+            // Validar longitud del código de barras (si no está vacío)
+            if (!string.IsNullOrEmpty(codigo) && (codigo.Length < 8 || codigo.Length > 20))
+            {
+                MessageBox.Show("El código de barras debe tener entre 8 y 20 caracteres.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Consulta SQL para insertar producto
             string query = "INSERT INTO productos (Nombre, Codigo, Descripcion, Precio, Existencia) VALUES (@nombre, @codigo, @descripcion, @precio, @existencia)";
 
             using (MySqlConnection conn = conexionBD.ObtenerConexion())
@@ -56,41 +68,33 @@ namespace PuntoDeVenta
                     conn.Open();
                     MySqlCommand cmd = new MySqlCommand(query, conn);
 
-                    // Agregar parámetros a la consulta
+                    // Agregar parámetros
                     cmd.Parameters.AddWithValue("@nombre", nombre);
                     cmd.Parameters.AddWithValue("@codigo", codigo);
                     cmd.Parameters.AddWithValue("@descripcion", descripcion);
                     cmd.Parameters.AddWithValue("@precio", precio);
                     cmd.Parameters.AddWithValue("@existencia", existencia);
 
-                    // Ejecutar la consulta de inserción
+                    // Ejecutar la consulta
                     int filasAfectadas = cmd.ExecuteNonQuery();
 
-                    // Verificar si se insertó correctamente
                     if (filasAfectadas > 0)
                     {
-                        // Si la inserción fue exitosa, mostrar mensaje
                         MessageBox.Show("Producto agregado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                        // Agregar el producto al DataGridView
                         dataGridView.Rows.Add(nombre, codigo, descripcion, precio.ToString("C"), existencia);
-
-                        // Limpiar los campos de texto
-                        //LimpiarCampos();
                     }
                     else
                     {
-                        // Si no se insertó correctamente, mostrar mensaje de error
-                        MessageBox.Show("Ocurrió un error al intentar agregar el producto.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Error al intentar agregar el producto.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 catch (Exception ex)
                 {
-                    // Manejo de excepciones, si ocurre algún error de conexión
                     MessageBox.Show($"Error al agregar el producto: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
+
         public bool BuscarProductoPorCodigo(string codigo, TextBox txtNombre, TextBox txtCodigo, TextBox txtDescripcion, TextBox txtPrecio, TextBox txtExistencia)
         {
             using (MySqlConnection conn = conexionBD.ObtenerConexion())

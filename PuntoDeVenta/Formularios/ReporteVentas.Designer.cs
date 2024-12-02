@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.button1 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -38,6 +39,8 @@
             this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnRegreso = new System.Windows.Forms.Button();
+            this.txtMes = new System.Windows.Forms.TextBox();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -129,11 +132,26 @@
             this.btnRegreso.UseVisualStyleBackColor = true;
             this.btnRegreso.Click += new System.EventHandler(this.btnRegreso_Click);
             // 
+            // txtMes
+            // 
+            this.txtMes.Location = new System.Drawing.Point(206, 159);
+            this.txtMes.Name = "txtMes";
+            this.txtMes.Size = new System.Drawing.Size(100, 22);
+            this.txtMes.TabIndex = 4;
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
+            // 
             // ReporteVentas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(979, 450);
+            this.Controls.Add(this.txtMes);
             this.Controls.Add(this.btnRegreso);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.button1);
@@ -142,6 +160,7 @@
             this.Text = "ReporteVentas";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -157,5 +176,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Total;
         private System.Windows.Forms.DataGridViewTextBoxColumn Fecha;
         private System.Windows.Forms.Button btnRegreso;
+        private System.Windows.Forms.TextBox txtMes;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
     }
 }

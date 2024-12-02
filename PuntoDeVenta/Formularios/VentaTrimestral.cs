@@ -1,117 +1,73 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Windows.Forms;
-using MySql.Data.MySqlClient;
-using PuntoDeVenta.Clases; // Asegúrate de incluir este espacio de nombres
+﻿    using System;
+    using System.Collections.Generic;
+    using System.Data.SqlClient;
+    using System.Data;
+    using System.Windows.Forms;
+    using MySql.Data.MySqlClient;
+    using PuntoDeVenta.Clases;
 
-namespace PuntoDeVenta.Formularios
-{
-    public partial class VentaTrimestral : Form
+
+    namespace PuntoDeVenta.Formularios
     {
-        private string connectionString = "server=localhost;database=tarea;user=root;password=root;";
-        VentaTrimestral ventaTrimestral = new VentaTrimestral();
 
-        public VentaTrimestral()
+    public partial class VentaTrimestralForm : Form
+    {
+        private void btnGenerarReporte_Click(object sender, EventArgs e)
         {
-            InitializeComponent();
-            CargarOpcionesComboBox(); // Método para llenar las opciones del ComboBox
-            for (int i = DateTime.Now.Year; i >= 2000; i--)
-            {
-                comboBoxAnio.Items.Add(i);
-            }
-            comboBoxAnio.SelectedIndex = 0;
+            GenerarReporte();
         }
 
-        private void CargarOpcionesComboBox()
+        private void GenerarReporte()
         {
-            
-        }
+            string connectionString = "server=localhost;database=tarea;user=root;password=root;";
+            string query = @"
+                SELECT 
+                    Nombre_producto,
+                    SUM(CASE WHEN MONTH(fecha) BETWEEN 1 AND 3 THEN cant_producto ELSE 0 END) AS Trimestre1,
+                    SUM(CASE WHEN MONTH(fecha) BETWEEN 4 AND 6 THEN cant_producto ELSE 0 END) AS Trimestre2,
+                    SUM(CASE WHEN MONTH(fecha) BETWEEN 7 AND 9 THEN cant_producto ELSE 0 END) AS Trimestre3,
+                    SUM(CASE WHEN MONTH(fecha) BETWEEN 10 AND 12 THEN cant_producto ELSE 0 END) AS Trimestre4
+                FROM detalleproducto
+                JOIN productos ON detalleproducto.Nombre_producto = productos.Nombre
+                WHERE YEAR(fecha) = @anio
+                GROUP BY Nombre_producto
+                ORDER BY Nombre_producto;";
 
-        private void btnGraReporte_Click(object sender, EventArgs e)
-        {
+            // Obtén el año desde el control (o usa un valor fijo si no hay control).
+            int anio = 2024; // Cambiar por el valor dinámico si se agrega un NumericUpDown.
 
-
-            VentaTrimestral ventaTrimestral = new VentaTrimestral();
-            var ventas = ventaTrimestral.ObtenerVentasTrimestrales(anioSeleccionado);
-
-            // Limpiar el DataGridView
-            dataGridViewReporte.Rows.Clear();
-            dataGridViewReporte.Columns.Clear();
-
-            // Configurar columnas
-            dataGridViewReporte.Columns.Add("NombreProducto", "Producto");
-            dataGridViewReporte.Columns.Add("Trim1", "Trim. 1");
-            dataGridViewReporte.Columns.Add("Trim2", "Trim. 2");
-            dataGridViewReporte.Columns.Add("Trim3", "Trim. 3");
-            dataGridViewReporte.Columns.Add("Trim4", "Trim. 4");
-
-            // Agregar filas
-            foreach (var producto in ventas)
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
-                dataGridViewReporte.Rows.Add(
-                    producto["NombreProducto"],
-                    producto["Trim1"],
-                    producto["Trim2"],
-                    producto["Trim3"],
-                    producto["Trim4"]
-                );
-            }
-        }
-
-        public List<Dictionary<string, object>> ObtenerVentasTrimestrales(int anio)
-        {
-            var ventasTrimestrales = new List<Dictionary<string, object>>();
-
-            using (MySqlConnection conexion = new MySqlConnection(connectionString))
-            {
-                string query = @"
-             
-            SELECT p.Nombre AS Producto,
-    SUM(dv.cantidadProductos) AS TotalVendidos
-FROM detallesventa dv, productos p
-WHERE p.Nombre = p.Nombre
-GROUP BY  p.Codigo, p.Nombre;";
-
-                MySqlCommand comando = new MySqlCommand(query, conexion);
-                comando.Parameters.AddWithValue("@anio", anio);
-
-                conexion.Open();
-                using (MySqlDataReader reader = comando.ExecuteReader())
+                try
                 {
-                    while (reader.Read())
-                    {
-                        var producto = new Dictionary<string, object>
-                    {
-                        { "NombreProducto", reader["NombreProducto"].ToString() },
-                        { "Trim1", Convert.ToInt32(reader["Trim1"]) },
-                        { "Trim2", Convert.ToInt32(reader["Trim2"]) },
-                        { "Trim3", Convert.ToInt32(reader["Trim3"]) },
-                        { "Trim4", Convert.ToInt32(reader["Trim4"]) }
-                    };
-                        ventasTrimestrales.Add(producto);
-                    }
+                    connection.Open();
+                    MySqlCommand command = new MySqlCommand(query, connection);
+                    command.Parameters.AddWithValue("@anio", anio);
+
+                    MySqlDataAdapter adapter = new MySqlDataAdapter(command);
+                    DataTable dataTable = new DataTable();
+
+                    // Llena la tabla con los resultados.
+                    adapter.Fill(dataTable);
+
+                    // Asigna los datos al DataGridView.
+                    dgvReporte.DataSource = dataTable;
+
+                    // Ajusta los nombres de las columnas para que sean más amigables.
+                    dgvReporte.Columns[0].HeaderText = "Producto";
+                    dgvReporte.Columns[1].HeaderText = "Trimestre 1";
+                    dgvReporte.Columns[2].HeaderText = "Trimestre 2";
+                    dgvReporte.Columns[3].HeaderText = "Trimestre 3";
+                    dgvReporte.Columns[4].HeaderText = "Trimestre 4";
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error al generar el reporte: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-
-            return ventasTrimestrales;
-        }
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-         
-        }
-
-        private void btnregreso_Click(object sender, EventArgs e)
-        {
-            TipoDeReporte tipoDeReporte = new TipoDeReporte();
-            tipoDeReporte.Show();
-            this.Close();
-        }
-
-        private void dataGridVieWReporte_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            
         }
     }
+
 }
 
 

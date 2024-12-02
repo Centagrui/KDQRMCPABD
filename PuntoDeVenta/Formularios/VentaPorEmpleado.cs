@@ -107,6 +107,16 @@ namespace PuntoDeVenta.Formularios
         {
 
         }
+
+        private void comboBoxMes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridViewVentas_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 
     // Clase para acceso a datos

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using PuntoDeVenta.Clases;
 
 namespace PuntoDeVenta.Formularios
 {
@@ -34,7 +35,7 @@ namespace PuntoDeVenta.Formularios
 
         private void button3_Click(object sender, EventArgs e)
         {
-            VentaTrimestral ventaTrimestral = new VentaTrimestral();
+            VentaTrimestralForm ventaTrimestral = new VentaTrimestralForm();
             ventaTrimestral.Show();
          
         }

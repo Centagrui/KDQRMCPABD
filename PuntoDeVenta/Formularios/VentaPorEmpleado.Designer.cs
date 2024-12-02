@@ -60,6 +60,7 @@
             this.comboBoxMes.Name = "comboBoxMes";
             this.comboBoxMes.Size = new System.Drawing.Size(278, 24);
             this.comboBoxMes.TabIndex = 2;
+            this.comboBoxMes.SelectedIndexChanged += new System.EventHandler(this.comboBoxMes_SelectedIndexChanged);
             // 
             // comboBoxAnio
             // 
@@ -83,6 +84,7 @@
             this.dataGridViewVentas.RowTemplate.Height = 24;
             this.dataGridViewVentas.Size = new System.Drawing.Size(416, 232);
             this.dataGridViewVentas.TabIndex = 4;
+            this.dataGridViewVentas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewVentas_CellContentClick);
             // 
             // Empleado
             // 

@@ -288,5 +288,35 @@
   <ItemGroup>
     <None Include="Resources\ReporteVen %281%29.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\imagen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\imagen2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\imagen3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ventames.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\venMes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\menuReportes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ventaEmpleado.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cajaRegi.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\caja.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\trimestre.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

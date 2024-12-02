@@ -243,8 +243,6 @@ namespace PuntoDeVenta
                     return false;
                 }
 
-
-
             }
         }
     }

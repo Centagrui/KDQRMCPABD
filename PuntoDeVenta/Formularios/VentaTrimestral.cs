@@ -30,7 +30,6 @@ namespace PuntoDeVenta.Formularios
         private void btnGraReporte_Click(object sender, EventArgs e)
         {
 
-            int anioSeleccionado = int.Parse(comboBoxAnio.SelectedItem.ToString());
 
             VentaTrimestral ventaTrimestral = new VentaTrimestral();
             var ventas = ventaTrimestral.ObtenerVentasTrimestrales(anioSeleccionado);
@@ -103,12 +102,14 @@ GROUP BY  p.Codigo, p.Nombre;";
 
         private void btnregreso_Click(object sender, EventArgs e)
         {
-            // Lógica del botón "Regresar"
+            TipoDeReporte tipoDeReporte = new TipoDeReporte();
+            tipoDeReporte.Show();
+            this.Close();
         }
 
         private void dataGridVieWReporte_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            // Lógica del evento CellContentClick del DataGridView
+            
         }
     }
 }

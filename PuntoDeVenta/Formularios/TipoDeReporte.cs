@@ -45,5 +45,10 @@ namespace PuntoDeVenta.Formularios
 
 
         }
+
+        private void TipoDeReporte_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

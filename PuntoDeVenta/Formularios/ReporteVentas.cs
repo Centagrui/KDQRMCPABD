@@ -85,5 +85,12 @@ namespace PuntoDeVenta.Formularios
         {
 
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            TipoDeReporte tipoDeReporte = new TipoDeReporte();
+            tipoDeReporte.Show();
+            this.Close();
+        }
     }
 }

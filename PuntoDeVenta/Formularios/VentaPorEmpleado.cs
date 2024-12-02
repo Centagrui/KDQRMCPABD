@@ -98,7 +98,14 @@ namespace PuntoDeVenta.Formularios
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //Menu menu = new Menu(); 
+            TipoDeReporte tipoDeReporte = new TipoDeReporte();
+            tipoDeReporte.Show();
+            this.Close();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 

@@ -56,29 +56,31 @@
             this.txtCantidad = new System.Windows.Forms.TextBox();
             this.btnAtras = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // txtUsuario
             // 
-            this.txtUsuario.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUsuario.Location = new System.Drawing.Point(324, 42);
+            this.txtUsuario.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtUsuario.Location = new System.Drawing.Point(325, 32);
             this.txtUsuario.Margin = new System.Windows.Forms.Padding(4);
             this.txtUsuario.Name = "txtUsuario";
-            this.txtUsuario.Size = new System.Drawing.Size(428, 27);
+            this.txtUsuario.Size = new System.Drawing.Size(428, 26);
             this.txtUsuario.TabIndex = 1;
             // 
             // cmbCliente
             // 
-            this.cmbCliente.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbCliente.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbCliente.FormattingEnabled = true;
             this.cmbCliente.Items.AddRange(new object[] {
             "Cliente Mostrador",
             "Cliente Mayorista"});
-            this.cmbCliente.Location = new System.Drawing.Point(331, 78);
+            this.cmbCliente.Location = new System.Drawing.Point(331, 65);
             this.cmbCliente.Margin = new System.Windows.Forms.Padding(4);
             this.cmbCliente.Name = "cmbCliente";
-            this.cmbCliente.Size = new System.Drawing.Size(172, 29);
+            this.cmbCliente.Size = new System.Drawing.Size(172, 25);
             this.cmbCliente.TabIndex = 3;
             this.cmbCliente.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
@@ -94,11 +96,11 @@
             this.Cantidad,
             this.Precio,
             this.Importe});
-            this.dataGridView1.Location = new System.Drawing.Point(16, 206);
+            this.dataGridView1.Location = new System.Drawing.Point(16, 179);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.Size = new System.Drawing.Size(979, 251);
+            this.dataGridView1.Size = new System.Drawing.Size(925, 173);
             this.dataGridView1.TabIndex = 5;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -154,7 +156,7 @@
             // TxtCodigo
             // 
             this.TxtCodigo.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtCodigo.Location = new System.Drawing.Point(497, 148);
+            this.TxtCodigo.Location = new System.Drawing.Point(490, 123);
             this.TxtCodigo.Margin = new System.Windows.Forms.Padding(4);
             this.TxtCodigo.Name = "TxtCodigo";
             this.TxtCodigo.Size = new System.Drawing.Size(117, 27);
@@ -163,7 +165,7 @@
             // 
             // txtTotal
             // 
-            this.txtTotal.Location = new System.Drawing.Point(861, 465);
+            this.txtTotal.Location = new System.Drawing.Point(809, 383);
             this.txtTotal.Margin = new System.Windows.Forms.Padding(4);
             this.txtTotal.Name = "txtTotal";
             this.txtTotal.Size = new System.Drawing.Size(132, 22);
@@ -174,7 +176,7 @@
             this.btnCancelar.BackColor = System.Drawing.Color.PowderBlue;
             this.btnCancelar.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelar.ForeColor = System.Drawing.Color.SteelBlue;
-            this.btnCancelar.Location = new System.Drawing.Point(16, 464);
+            this.btnCancelar.Location = new System.Drawing.Point(16, 380);
             this.btnCancelar.Margin = new System.Windows.Forms.Padding(4);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(123, 28);
@@ -188,7 +190,7 @@
             this.btnAceptar.BackColor = System.Drawing.Color.PowderBlue;
             this.btnAceptar.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAceptar.ForeColor = System.Drawing.Color.SteelBlue;
-            this.btnAceptar.Location = new System.Drawing.Point(147, 464);
+            this.btnAceptar.Location = new System.Drawing.Point(153, 377);
             this.btnAceptar.Margin = new System.Windows.Forms.Padding(4);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(155, 28);
@@ -203,7 +205,7 @@
             this.lblUsuario.BackColor = System.Drawing.Color.Tan;
             this.lblUsuario.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUsuario.ForeColor = System.Drawing.Color.SaddleBrown;
-            this.lblUsuario.Location = new System.Drawing.Point(211, 42);
+            this.lblUsuario.Location = new System.Drawing.Point(211, 32);
             this.lblUsuario.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblUsuario.Name = "lblUsuario";
             this.lblUsuario.Size = new System.Drawing.Size(100, 21);
@@ -216,7 +218,7 @@
             this.lblCliente.BackColor = System.Drawing.Color.Tan;
             this.lblCliente.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCliente.ForeColor = System.Drawing.Color.SaddleBrown;
-            this.lblCliente.Location = new System.Drawing.Point(211, 119);
+            this.lblCliente.Location = new System.Drawing.Point(211, 96);
             this.lblCliente.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCliente.Name = "lblCliente";
             this.lblCliente.Size = new System.Drawing.Size(74, 21);
@@ -226,12 +228,12 @@
             // btnAgregar
             // 
             this.btnAgregar.BackColor = System.Drawing.Color.Tan;
-            this.btnAgregar.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAgregar.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAgregar.ForeColor = System.Drawing.Color.SaddleBrown;
-            this.btnAgregar.Location = new System.Drawing.Point(624, 142);
+            this.btnAgregar.Location = new System.Drawing.Point(615, 124);
             this.btnAgregar.Margin = new System.Windows.Forms.Padding(4);
             this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(129, 39);
+            this.btnAgregar.Size = new System.Drawing.Size(138, 30);
             this.btnAgregar.TabIndex = 16;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = false;
@@ -242,7 +244,7 @@
             this.txtEliminarProducto.BackColor = System.Drawing.Color.PowderBlue;
             this.txtEliminarProducto.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEliminarProducto.ForeColor = System.Drawing.Color.SteelBlue;
-            this.txtEliminarProducto.Location = new System.Drawing.Point(309, 465);
+            this.txtEliminarProducto.Location = new System.Drawing.Point(323, 380);
             this.txtEliminarProducto.Margin = new System.Windows.Forms.Padding(4);
             this.txtEliminarProducto.Name = "txtEliminarProducto";
             this.txtEliminarProducto.Size = new System.Drawing.Size(180, 28);
@@ -253,41 +255,41 @@
             // 
             // txtClave
             // 
-            this.txtClave.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtClave.Location = new System.Drawing.Point(512, 81);
+            this.txtClave.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtClave.Location = new System.Drawing.Point(513, 63);
             this.txtClave.Margin = new System.Windows.Forms.Padding(4);
             this.txtClave.Name = "txtClave";
-            this.txtClave.Size = new System.Drawing.Size(132, 27);
+            this.txtClave.Size = new System.Drawing.Size(132, 23);
             this.txtClave.TabIndex = 18;
             this.txtClave.TextChanged += new System.EventHandler(this.txtClave_TextChanged);
             // 
             // fecha
             // 
-            this.fecha.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.fecha.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.fecha.Location = new System.Drawing.Point(204, 5);
             this.fecha.Margin = new System.Windows.Forms.Padding(4);
             this.fecha.Name = "fecha";
-            this.fecha.Size = new System.Drawing.Size(548, 27);
+            this.fecha.Size = new System.Drawing.Size(548, 23);
             this.fecha.TabIndex = 19;
             this.fecha.ValueChanged += new System.EventHandler(this.fecha_ValueChanged);
             // 
             // txtNombreCliente
             // 
-            this.txtNombreCliente.Location = new System.Drawing.Point(301, 116);
+            this.txtNombreCliente.Location = new System.Drawing.Point(293, 98);
             this.txtNombreCliente.Margin = new System.Windows.Forms.Padding(4);
             this.txtNombreCliente.Name = "txtNombreCliente";
-            this.txtNombreCliente.Size = new System.Drawing.Size(451, 22);
+            this.txtNombreCliente.Size = new System.Drawing.Size(460, 22);
             this.txtNombreCliente.TabIndex = 20;
             // 
             // btnValidar
             // 
             this.btnValidar.BackColor = System.Drawing.Color.Tan;
-            this.btnValidar.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnValidar.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnValidar.ForeColor = System.Drawing.Color.SaddleBrown;
-            this.btnValidar.Location = new System.Drawing.Point(653, 75);
+            this.btnValidar.Location = new System.Drawing.Point(653, 60);
             this.btnValidar.Margin = new System.Windows.Forms.Padding(4);
             this.btnValidar.Name = "btnValidar";
-            this.btnValidar.Size = new System.Drawing.Size(100, 39);
+            this.btnValidar.Size = new System.Drawing.Size(100, 33);
             this.btnValidar.TabIndex = 21;
             this.btnValidar.Text = "Validar";
             this.btnValidar.UseVisualStyleBackColor = false;
@@ -299,7 +301,7 @@
             this.label2.BackColor = System.Drawing.Color.Tan;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.SaddleBrown;
-            this.label2.Location = new System.Drawing.Point(211, 85);
+            this.label2.Location = new System.Drawing.Point(210, 65);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(113, 21);
@@ -312,7 +314,7 @@
             this.label1.BackColor = System.Drawing.Color.Tan;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.SaddleBrown;
-            this.label1.Location = new System.Drawing.Point(407, 151);
+            this.label1.Location = new System.Drawing.Point(405, 126);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(77, 21);
@@ -325,7 +327,7 @@
             this.label3.BackColor = System.Drawing.Color.PowderBlue;
             this.label3.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.SteelBlue;
-            this.label3.Location = new System.Drawing.Point(765, 471);
+            this.label3.Location = new System.Drawing.Point(705, 384);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(85, 21);
@@ -334,7 +336,7 @@
             // 
             // txtCantidad
             // 
-            this.txtCantidad.Location = new System.Drawing.Point(319, 148);
+            this.txtCantidad.Location = new System.Drawing.Point(316, 125);
             this.txtCantidad.Margin = new System.Windows.Forms.Padding(4);
             this.txtCantidad.Name = "txtCantidad";
             this.txtCantidad.Size = new System.Drawing.Size(81, 22);
@@ -347,7 +349,7 @@
             this.btnAtras.Location = new System.Drawing.Point(3, 2);
             this.btnAtras.Margin = new System.Windows.Forms.Padding(4);
             this.btnAtras.Name = "btnAtras";
-            this.btnAtras.Size = new System.Drawing.Size(48, 38);
+            this.btnAtras.Size = new System.Drawing.Size(40, 30);
             this.btnAtras.TabIndex = 26;
             this.btnAtras.UseVisualStyleBackColor = true;
             this.btnAtras.Click += new System.EventHandler(this.btnAtras_Click);
@@ -358,19 +360,29 @@
             this.label4.BackColor = System.Drawing.Color.Tan;
             this.label4.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.SaddleBrown;
-            this.label4.Location = new System.Drawing.Point(211, 149);
+            this.label4.Location = new System.Drawing.Point(211, 124);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(97, 21);
             this.label4.TabIndex = 27;
             this.label4.Text = "Cantidad:";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImage = global::PuntoDeVenta.Properties.Resources.caja;
+            this.pictureBox1.Location = new System.Drawing.Point(774, -7);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(167, 161);
+            this.pictureBox1.TabIndex = 28;
+            this.pictureBox1.TabStop = false;
+            // 
             // Ventas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::PuntoDeVenta.Properties.Resources.ventaRe;
-            this.ClientSize = new System.Drawing.Size(1011, 513);
+            this.ClientSize = new System.Drawing.Size(967, 411);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.btnAtras);
             this.Controls.Add(this.txtCantidad);
@@ -397,6 +409,7 @@
             this.Text = "Ventas";
             this.Load += new System.EventHandler(this.Ventas_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -431,5 +444,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Importe;
         private System.Windows.Forms.Button btnAtras;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

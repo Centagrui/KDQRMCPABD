@@ -28,6 +28,8 @@ namespace PuntoDeVenta.Formularios
 
         private void button2_Click(object sender, EventArgs e)
         {
+
+
             VentaPorEmpleado ventaPorEmpleado = new VentaPorEmpleado();
             ventaPorEmpleado.Show();
             this.Close();

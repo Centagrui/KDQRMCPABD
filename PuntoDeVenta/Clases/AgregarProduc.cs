@@ -242,6 +242,9 @@ namespace PuntoDeVenta
                     MessageBox.Show($"Error al eliminar el producto: {ex.Message}");
                     return false;
                 }
+
+
+
             }
         }
     }

@@ -314,7 +314,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::PuntoDeVenta.Properties.Resources.CRUDP;
-            this.ClientSize = new System.Drawing.Size(928, 436);
+            this.ClientSize = new System.Drawing.Size(914, 436);
             this.Controls.Add(this.btnAtras);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);

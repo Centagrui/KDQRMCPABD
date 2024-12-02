@@ -130,6 +130,12 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Clases\Login.cs" />
+    <Compile Include="Formularios\FormReporte.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FormReporte.Designer.cs">
+      <DependentUpon>FormReporte.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\Menu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -155,12 +161,6 @@
     </Compile>
     <Compile Include="Formularios\VentaPorEmpleado.Designer.cs">
       <DependentUpon>VentaPorEmpleado.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Formularios\VentaTrimestral.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\VentaTrimestral.Designer.cs">
-      <DependentUpon>VentaTrimestral.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Formularios\Registrar.cs">
@@ -188,6 +188,9 @@
     <EmbeddedResource Include="Formularios\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FormReporte.resx">
+      <DependentUpon>FormReporte.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Menu.resx">
       <DependentUpon>Menu.cs</DependentUpon>
     </EmbeddedResource>
@@ -199,9 +202,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\VentaPorEmpleado.resx">
       <DependentUpon>VentaPorEmpleado.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\VentaTrimestral.resx">
-      <DependentUpon>VentaTrimestral.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

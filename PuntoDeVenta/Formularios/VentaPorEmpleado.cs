@@ -119,7 +119,6 @@ namespace PuntoDeVenta.Formularios
         }
     }
 
-    // Clase para acceso a datos
     public class VentaEmpleadoDAO
     {
         private string connectionString = "server=localhost;database=tarea;user=root;password=root;";

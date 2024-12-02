@@ -37,9 +37,10 @@ namespace PuntoDeVenta.Formularios
 
         private void button3_Click(object sender, EventArgs e)
         {
-            VentaTrimestralForm ventaTrimestral = new VentaTrimestralForm();
-            ventaTrimestral.Show();
-         
+            FormReporte formReporte = new FormReporte();
+            formReporte.Show();
+            this.Close();
+
         }
 
         private void btnRegreso_Click(object sender, EventArgs e)

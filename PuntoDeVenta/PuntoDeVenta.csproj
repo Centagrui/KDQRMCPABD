@@ -102,6 +102,7 @@
     <Compile Include="Clases\DetallesDeVenta.cs" />
     <Compile Include="Clases\ReporteDeVentas.cs" />
     <Compile Include="Clases\VentaEmpleadoDAO.cs" />
+    <Compile Include="Clases\ventaTrimestral.cs" />
     <Compile Include="Formularios\AgregarProducto.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -316,6 +317,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\trimestre.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\trim.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

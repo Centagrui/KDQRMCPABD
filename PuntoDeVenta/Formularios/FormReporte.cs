@@ -82,6 +82,18 @@ namespace PuntoDeVenta.Formularios
         {
             // Lógica adicional para manejar clics en celdas, si es necesario
         }
+
+        private void FormReporte_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            TipoDeReporte tipoDeReporte = new TipoDeReporte();
+            tipoDeReporte.Show();
+            this.Close();
+        }
     }
 
 }
